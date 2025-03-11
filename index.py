@@ -36,7 +36,7 @@ semaphore = asyncio.Semaphore(CONCURRENT_REQUESTS)
 failed_requests = []
  
 # 📌 Configuración del cURL
-BASE_URL = "https://algoliabycarlos--siman.myvtex.com/_v/catalog/"
+BASE_URL = "https://algolia--siman.myvtex.com/_v/catalog/"
 COOKIE_HEADER = "janus_sid=7dec2dbc-293c-454c-a1cf-a807299ab175"
  
 ### 🔥 1️⃣ UNIR ARCHIVOS Y GENERAR SOLO CURLs ###
@@ -121,7 +121,7 @@ async def process_batches():
      # Save failed requests after processing all batches
     if failed_requests:
         failed_csv = os.path.join(OUTPUT_DIR, "failed_requests.csv")
-        pd.DataFrame(failed_requests, columns=["URL"]).to_csv(failed_csv, index=False)
+        pd.DataFrame(failed_requests, columns=["Línea", "URL", "Error"]).to_csv(failed_csv, index=False)
         print(f"\n⚠️ Fallos guardados en: {failed_csv}")
  
     print("\n✅ Todos los archivos han sido procesados.")
